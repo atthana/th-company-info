@@ -1,2 +1,2 @@
 # th-company-info
-For pull data company info from page dataforthai (for my education purpose)
+For pulling data of company info from page dataforthai (for my education purpose)
