@@ -34,7 +34,7 @@ def th_company_info(tax_id: str):
 
     # Validate the length of the tax_id
     if len(tax_id) != 13 or not tax_id.isdigit():
-        raise ValueError("Tax ID must be a 13-digit numeric value (string or integer).")
+        raise ValueError("Tax ID must be a 13-digit numeric value (string type).")
 
     url = f"https://www.dataforthai.com/company/{tax_id}"
     scraper = cloudscraper.create_scraper()
