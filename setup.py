@@ -8,7 +8,7 @@ setup(
     long_description_content_type="text/markdown",
     author="Grassroot Engineer",
     author_email="q_electronics@hotmail.com",
-    url="https://github.com/atthana/th-company-info",
+    # url="https://github.com/atthana/th-company-info",
     packages=find_packages(),
     install_requires=[
         "cloudscraper",

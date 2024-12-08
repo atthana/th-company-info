@@ -9,7 +9,7 @@ pip install th-company-info
 ## Usage
 
 ```
-import th_company_info
+from th_company_info.scraper import th_company_info
 
 try:
     tax_id = "0107542000011"  # Replace with a valid 13-digit tax ID
