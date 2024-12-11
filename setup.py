@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="th-company-info",
-    version="0.0.0.1",
+    version="0.0.1",
     description="A Python library to get a company information from dataforthai.com (For my eductaional purpose)",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",

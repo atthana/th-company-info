@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 from .exception import ScraperException, ParseException
 
-def safe_find_text(soup, search, next_tag="td", default="null"):
+def safe_find_text(soup, search, next_tag="td", default=None):
     """
     Safely extracts text from a BeautifulSoup object.
     :param soup: BeautifulSoup object
@@ -50,8 +50,8 @@ def th_company_info(tax_id: str):
 
         data = {
             "tax_id": safe_find_text(soup, "เลขทะเบียน"),
-            "name_th": soup.find("h1", class_="noselect").text.strip() if soup.find("h1", class_="noselect") else "null",
-            "name_en": soup.find("h3", class_="noselect").text.strip() if soup.find("h3", class_="noselect") else "null",
+            "name_th": soup.find("h1", class_="noselect").text.strip() if soup.find("h1", class_="noselect") else None,
+            "name_en": soup.find("h3", class_="noselect").text.strip() if soup.find("h3", class_="noselect") else None,
             "description": safe_find_text(soup, "ธุรกิจ"),
             "status": safe_find_text(soup, "สถานะ"),
             "registered_date": safe_find_text(soup, "จดทะเบียน"),
@@ -59,11 +59,11 @@ def th_company_info(tax_id: str):
             "address": safe_find_text(soup, "ที่ตั้ง"),
             "website": (
                 soup.find(string="เว็บไซต์").find_next("a").text.strip()
-                if soup.find(string="เว็บไซต์") else "null"
+                if soup.find(string="เว็บไซต์") else None
             ),
             "stock_symbol": safe_find_text(soup, "หลักทรัพย์"),
         }
-        return data_to_json(data)
+        return data
 
     except Exception as e:
         raise ParseException(f"Error parsing HTML: {e}")
@@ -75,3 +75,7 @@ def data_to_json(data):
     :return: JSON string
     """
     return json.dumps(data, ensure_ascii=False, indent=4)
+
+
+
+# print(th_company_info('0107542000011'))  # For testing just go "python" and "from th_company_info.scraper import th_company_info"
